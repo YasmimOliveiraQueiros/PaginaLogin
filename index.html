@@ -1,0 +1,317 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>StartupID · Login</title>
+    <meta
+      name="description"
+      content="Acesse sua conta ou crie um cadastro para começar."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#authCard">Pular para o formulário</a>
+
+    <main class="page">
+      <section class="shell" aria-label="Autenticação">
+        <aside class="brand" aria-label="Apresentação">
+          <div class="brand__top">
+            <div class="logo" aria-hidden="true">
+              <span class="logo__mark"></span>
+              <span class="logo__mark logo__mark--2"></span>
+            </div>
+            <div class="brand__name">
+              <span class="brand__title">StartupID</span>
+              <span class="brand__tag">Login e cadastro em minutos</span>
+            </div>
+          </div>
+
+          <h1 class="brand__headline">
+            Seu acesso seguro para operar, crescer e escalar.
+          </h1>
+          <p class="brand__subhead">
+            Interface clara, responsiva e pensada para SaaS: autenticação sem
+            fricção, com acessibilidade e confiança.
+          </p>
+
+          <ul class="bullets" aria-label="Benefícios">
+            <li class="bullets__item">
+              <span class="bullets__icon" aria-hidden="true"></span>
+              <span>Fluxo rápido: entrar ou criar conta em 1 minuto</span>
+            </li>
+            <li class="bullets__item">
+              <span class="bullets__icon" aria-hidden="true"></span>
+              <span>Campos inteligentes com validação e dicas</span>
+            </li>
+            <li class="bullets__item">
+              <span class="bullets__icon" aria-hidden="true"></span>
+              <span>Design profissional com foco em conversão</span>
+            </li>
+          </ul>
+
+          <div class="trust" aria-label="Segurança">
+            <div class="trust__pill">
+              <span class="trust__dot" aria-hidden="true"></span>
+              <span>Criptografia em trânsito (TLS)</span>
+            </div>
+            <div class="trust__pill">
+              <span class="trust__dot trust__dot--2" aria-hidden="true"></span>
+              <span>Boas práticas de UX e acessibilidade</span>
+            </div>
+          </div>
+        </aside>
+
+        <section class="card" id="authCard" aria-label="Formulários">
+          <header class="card__header">
+            <div class="tabs" role="tablist" aria-label="Login e cadastro">
+              <button
+                class="tab tab--active"
+                id="tab-login"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-login"
+              >
+                Entrar
+              </button>
+              <button
+                class="tab"
+                id="tab-signup"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-signup"
+                tabindex="-1"
+              >
+                Criar conta
+              </button>
+            </div>
+
+            <div class="card__hint" id="cardHint">
+              Use seu e-mail corporativo para continuar.
+            </div>
+          </header>
+
+          <div class="panels">
+            <section
+              id="panel-login"
+              class="panel panel--active"
+              role="tabpanel"
+              aria-labelledby="tab-login"
+            >
+              <form class="form" id="loginForm" novalidate>
+                <div class="field">
+                  <label class="label" for="loginEmail">E-mail</label>
+                  <input
+                    class="input"
+                    id="loginEmail"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    placeholder="voce@empresa.com"
+                    required
+                  />
+                  <p class="help" id="loginEmailHelp">Ex: voce@empresa.com</p>
+                  <p class="error" id="loginEmailError" aria-live="polite"></p>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="loginPassword">Senha</label>
+                  <div class="input-row">
+                    <input
+                      class="input"
+                      id="loginPassword"
+                      name="password"
+                      type="password"
+                      autocomplete="current-password"
+                      placeholder="Sua senha"
+                      minlength="8"
+                      required
+                    />
+                    <button
+                      class="ghost"
+                      type="button"
+                      data-toggle-password="loginPassword"
+                      aria-label="Mostrar senha"
+                    >
+                      Mostrar
+                    </button>
+                  </div>
+                  <p class="help">Mínimo de 8 caracteres.</p>
+                  <p
+                    class="error"
+                    id="loginPasswordError"
+                    aria-live="polite"
+                  ></p>
+                </div>
+
+                <div class="row">
+                  <label class="check">
+                    <input
+                      type="checkbox"
+                      name="remember"
+                      autocomplete="off"
+                    />
+                    <span>Lembrar deste dispositivo</span>
+                  </label>
+                  <a class="link" href="#" data-fake-action="forgot">
+                    Esqueci minha senha
+                  </a>
+                </div>
+
+                <button class="primary" type="submit">Entrar</button>
+
+                <p class="fineprint">
+                  Ao continuar, voce concorda com nossos
+                  <a class="link" href="#" data-fake-action="terms">Termos</a> e
+                  <a class="link" href="#" data-fake-action="privacy"
+                    >Privacidade</a
+                  >.
+                </p>
+              </form>
+            </section>
+
+            <section
+              id="panel-signup"
+              class="panel"
+              role="tabpanel"
+              aria-labelledby="tab-signup"
+              hidden
+            >
+              <form class="form" id="signupForm" novalidate>
+                <div class="field">
+                  <label class="label" for="signupName">Nome</label>
+                  <input
+                    class="input"
+                    id="signupName"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Seu nome"
+                    required
+                  />
+                  <p class="help">Como voce quer ser chamado no produto.</p>
+                  <p class="error" id="signupNameError" aria-live="polite"></p>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="signupEmail">E-mail</label>
+                  <input
+                    class="input"
+                    id="signupEmail"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    placeholder="voce@empresa.com"
+                    required
+                  />
+                  <p class="help">Use um e-mail valido para confirmacao.</p>
+                  <p class="error" id="signupEmailError" aria-live="polite"></p>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="signupPassword">Senha</label>
+                  <div class="input-row">
+                    <input
+                      class="input"
+                      id="signupPassword"
+                      name="password"
+                      type="password"
+                      autocomplete="new-password"
+                      placeholder="Crie uma senha"
+                      minlength="8"
+                      required
+                    />
+                    <button
+                      class="ghost"
+                      type="button"
+                      data-toggle-password="signupPassword"
+                      aria-label="Mostrar senha"
+                    >
+                      Mostrar
+                    </button>
+                  </div>
+                  <p class="help">Use 8+ caracteres, combinando letras e numeros.</p>
+                  <p
+                    class="error"
+                    id="signupPasswordError"
+                    aria-live="polite"
+                  ></p>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="signupConfirm">Confirmar senha</label>
+                  <div class="input-row">
+                    <input
+                      class="input"
+                      id="signupConfirm"
+                      name="confirm"
+                      type="password"
+                      autocomplete="new-password"
+                      placeholder="Repita a senha"
+                      minlength="8"
+                      required
+                    />
+                    <button
+                      class="ghost"
+                      type="button"
+                      data-toggle-password="signupConfirm"
+                      aria-label="Mostrar senha"
+                    >
+                      Mostrar
+                    </button>
+                  </div>
+                  <p class="help">As senhas precisam ser iguais.</p>
+                  <p
+                    class="error"
+                    id="signupConfirmError"
+                    aria-live="polite"
+                  ></p>
+                </div>
+
+                <label class="check check--terms">
+                  <input type="checkbox" id="terms" required />
+                  <span>
+                    Eu aceito os
+                    <a class="link" href="#" data-fake-action="terms">Termos</a>
+                    e a
+                    <a class="link" href="#" data-fake-action="privacy"
+                      >Politica de Privacidade</a
+                    >.
+                  </span>
+                </label>
+                <p class="error" id="termsError" aria-live="polite"></p>
+
+                <button class="primary" type="submit">Criar conta</button>
+
+                <p class="fineprint">
+                  Ja tem conta?
+                  <button class="link link--button" type="button" id="toLogin">
+                    Entrar
+                  </button>
+                </p>
+              </form>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+      <div class="toast__content">
+        <div class="toast__title" id="toastTitle">Tudo certo</div>
+        <div class="toast__msg" id="toastMsg"></div>
+      </div>
+      <button class="toast__close" type="button" id="toastClose" aria-label="Fechar">
+        Fechar
+      </button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
