@@ -44,25 +44,44 @@ function isEmailValid(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
 }
 
+let toastTimeoutId = null;
+
+function hideToast() {
+  const root = qs("#toast");
+  if (!root) return;
+  root.hidden = true;
+  if (toastTimeoutId !== null) {
+    window.clearTimeout(toastTimeoutId);
+    toastTimeoutId = null;
+  }
+}
+
+function bindToast() {
+  const close = qs("#toastClose");
+  const root = qs("#toast");
+  if (!close || !root) return;
+
+  close.addEventListener("click", hideToast);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (root.hidden) return;
+    hideToast();
+  });
+}
+
 function toast(title, msg) {
   const root = qs("#toast");
   const titleEl = qs("#toastTitle");
   const msgEl = qs("#toastMsg");
-  const close = qs("#toastClose");
-  if (!root || !titleEl || !msgEl || !close) return;
+  if (!root || !titleEl || !msgEl) return;
 
   titleEl.textContent = title;
   msgEl.textContent = msg;
   root.hidden = false;
 
-  const timeout = window.setTimeout(() => {
-    root.hidden = true;
-  }, 5200);
-
-  close.onclick = () => {
-    window.clearTimeout(timeout);
-    root.hidden = true;
-  };
+  if (toastTimeoutId !== null) window.clearTimeout(toastTimeoutId);
+  toastTimeoutId = window.setTimeout(hideToast, 5200);
 }
 
 function bindTabs() {
@@ -234,6 +253,7 @@ function bindForms() {
 function main() {
   setPanel("login");
   bindTabs();
+  bindToast();
   bindPasswordToggles();
   bindForms();
   bindFakeLinks();
